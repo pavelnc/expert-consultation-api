@@ -1,16 +1,17 @@
 package com.code4ro.legalconsultation.util;
 
-import com.code4ro.legalconsultation.model.persistence.BaseEntity;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.RandomUtils;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Size;
 import java.lang.reflect.Field;
 import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
+
+import com.code4ro.legalconsultation.model.persistence.BaseEntity;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
 
 public class RandomObjectFiller {
 
@@ -54,6 +55,8 @@ public class RandomObjectFiller {
             return BigInteger.valueOf(RandomUtils.nextInt());
         } else if(type.equals(String.class)) {
             return getFieldWithContraint(field);
+        }else if(type.equals(boolean.class)) {
+            return RandomUtils.nextBoolean();
         } else if(type.equals(Date.class)) {
             int randomYear = RandomUtils.nextInt(1990, 2020);
             int randomDay = RandomUtils.nextInt(1, 366);
